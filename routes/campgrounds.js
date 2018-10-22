@@ -38,8 +38,9 @@ router.post("/", middleware.isLoggedIn, function(req, res){
   }
   geocoder.geocode(req.body.location, function (err, data) {
     if (err || !data.length) {
-      req.flash('error', 'Invalid address');
-      return res.redirect('back');
+            //console.log(err);
+            req.flash('error', 'Invalid address');
+            return res.redirect('back');
     }
     var lat = data[0].latitude;
     var lng = data[0].longitude;
@@ -99,8 +100,9 @@ router.get("/:id/edit", middleware.checkCampgroundOwnership, function(req, res){
 router.put("/:id", middleware.checkCampgroundOwnership, function(req, res){
   geocoder.geocode(req.body.location, function (err, data) {
     if (err || !data.length) {
-      req.flash('error', 'Invalid address');
-      return res.redirect('back');
+          //console.log(err);
+          req.flash('error', 'Invalid address');
+          return res.redirect('back');
     }
     req.body.campground.lat = data[0].latitude;
     req.body.campground.lng = data[0].longitude;
