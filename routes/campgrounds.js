@@ -38,7 +38,7 @@ router.post("/", middleware.isLoggedIn, function(req, res){
   }
   geocoder.geocode(req.body.location, function (err, data) {
     if (err || !data.length) {
-            console.log(err);
+            //console.log(err);
             req.flash('error', 'Invalid address');
             return res.redirect('back');
     }
@@ -50,7 +50,7 @@ router.post("/", middleware.isLoggedIn, function(req, res){
     Campground.create(newCampground, function(err, newlyCreated){
         if(err || !newCampground){
              req.flash("error", "CAMPGROUND NOT CREATED");
-            console.log(err);
+             //console.log(err);
         } else {
             //redirect back to campgrounds page
             //console.log(newlyCreated);
@@ -100,7 +100,7 @@ router.get("/:id/edit", middleware.checkCampgroundOwnership, function(req, res){
 router.put("/:id", middleware.checkCampgroundOwnership, function(req, res){
   geocoder.geocode(req.body.location, function (err, data) {
     if (err || !data.length) {
-          console.log(err);
+          //console.log(err);
           req.flash('error', 'Invalid address');
           return res.redirect('back');
     }
